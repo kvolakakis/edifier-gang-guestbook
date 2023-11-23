@@ -1,0 +1,59 @@
+version: '3'
+services:
+  backend:
+    image: kvolakakis/graduation-guestbook-backend:${BACKEND_VERSION}
+    container_name: graduation-guestbook-backend
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=database
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_ROOT_USERNAME=${DB_ROOT_USERNAME}
+      - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    networks:
+      - graduation-guestbook-network
+    # Add any additional configuration for the backend service here
+
+  frontend:
+    image: kvolakakis/graduation-guestbook-frontend:${FRONTEND_VERSION}
+    container_name: graduation-guestbook-frontend
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - graduation-guestbook-network
+    # Add any additional configuration for the frontend service here
+
+  database:
+    image: mongo:4.2.1-bionic
+    container_name: graduation-guestbook-mongodb
+    restart: always
+    command:
+      - --auth
+      - --bind_ip_all
+      - --port=${DB_PORT}
+      - --setParameter=enableLocalhostAuthBypass=true
+      - --timeStampFormat=iso8601-utc
+    networks:
+      - graduation-guestbook-network
+    volumes:
+      - database-volume:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - HOST=${HOST}
+    ports:
+      - ${DB_PORT}:27017 # first port is for host, second port is for container
+    # Add any additional configuration for the MongoDB service here
+
+networks:
+  graduation-guestbook-network:
+    name: ${APP_NAME}-integration-network
+
+volumes:
+  database-volume:
+    name: ${APP_NAME}-database-volume
