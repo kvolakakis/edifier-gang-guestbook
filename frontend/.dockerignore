@@ -1,0 +1,41 @@
+# Files and directories to ignore when building a Docker image for an Angular application
+
+# Ignore development-specific files and directories
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+src/**/*.spec.ts
+src/**/*.e2e.ts
+e2e/
+.angular-cli.json
+.karma.conf.js
+.protractor.conf.js
+
+# Ignore build artifacts and output directories
+dist/
+.tmp/
+build/
+.angular
+*.js.map
+
+# Ignore version control files
+.git/
+.gitignore
+.gitattributes
+
+# Ignore project configuration files
+package-lock.json
+yarn.lock
+
+# Ignore editor-specific files and directories
+.vscode/
+.idea/
+
+# Ignore miscellaneous files
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.swp
+*.swo
