@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css");
 
 $guestbook-orange-light: #f8a145;
 $guestbook-orange-normal: #f07900;
@@ -24,16 +24,24 @@ body{
 
 .guestbook-btn-main{
   background-color: $guestbook-orange-normal;
-  // border: 10px solid;
   border-color:  $guestbook-orange-light;
-  // color:  $guestbook-orange-light;
   border-radius: 10px;
-  color: rgb(10, 10, 10);
+  color: white;
   padding: 0.5rem 1rem;
   user-select: none;
   &:active{
-    // background-color: $guestbook-orange-dark;
-    color: rgb(218, 215, 215);
+    box-shadow: 0px 0px 5px 5px $guestbook-orange-light;
+  }
+}
+
+.guestbook-btn-secondary{
+  background-color: rgb(10, 10, 10);
+  border-color:  $guestbook-orange-light;
+  color:  $guestbook-orange-light;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  user-select: none;
+  &:active{
     box-shadow: 0px 0px 5px 5px $guestbook-orange-light;
   }
 }

@@ -11,11 +11,21 @@ import { PostsListComponent } from './pages/posts/posts-list/posts-list.componen
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: "users", component: UsersListComponent },
-  { path: "users/view/:id", component: UsersViewComponent },
-  { path: "users/edit/:id", component: UsersEditComponent },
-  { path: "posts", component: PostsListComponent },
-  { path: "posts/view/:id", component: PostsViewComponent },
-  { path: "posts/edit/:id", component: PostsEditComponent },
+  { path: "users", component: UsersComponent,
+    children: [
+      { path: "", component: UsersListComponent },
+      { path: "view/:id", component: UsersViewComponent },
+      { path: "edit/:id", component: UsersEditComponent }
+    ]
+  },
+  { path: "posts", component: PostsComponent,
+    children: [
+      { path: "", component: PostsListComponent },
+      { path: "view/:id", component: PostsViewComponent },
+      { path: "edit/:id", component: PostsEditComponent }
+    ]
+  },
+  // { path: "posts/view/:id", component: PostsViewComponent },
+  // { path: "posts/edit/", component: PostsEditComponent },
   { path: '**', redirectTo: '' }
 ];

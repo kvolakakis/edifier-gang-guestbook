@@ -1,0 +1,48 @@
+<div class="menu">
+  <div class="d-flex justify-content-between align-items-center h-100">
+    <div
+      class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
+      [ngClass]="{ 'menu-selected': activeOption === 'home' }"
+      (click)="setActiveOption('home')"
+    >
+      <div>
+        <i class="bi"
+        [ngClass]="activeOption === 'home' ? 'bi-house-fill' : 'bi-house'"></i>
+      </div>
+    </div>
+    <div
+      class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
+      [ngClass]="{ 'menu-selected': activeOption === 'browse' }"
+      (click)="setActiveOption('browse')"
+    >
+      <div>
+        <i class="bi"
+        [ngClass]="activeOption === 'browse' ? 'bi-postcard-heart-fill' : 'bi-postcard-heart'"></i>
+      </div>
+    </div>
+    <div
+      class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
+      [ngClass]="{ 'menu-selected': activeOption === 'create' }"
+      (click)="setActiveOption('create')"
+    >
+      <div>
+        <i
+          class="bi"
+          [ngClass]="activeOption === 'create' ? 'bi-file-earmark-arrow-up-fill' : 'bi-file-earmark-arrow-up'"
+        ></i>
+      </div>
+    </div>
+    <div
+      class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
+      [ngClass]="{ 'menu-selected': activeOption === 'user' }"
+      (click)="setActiveOption('user')"
+    >
+      <div>
+        <i
+          class="bi"
+          [ngClass]="activeOption === 'user' ? 'bi-person-fill' : 'bi-person'"
+        ></i>
+      </div>
+    </div>
+  </div>
+</div>

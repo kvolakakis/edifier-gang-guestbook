@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+
+.menu{
+  box-shadow: 0px 0px 2px 2px rgb(43, 42, 42);
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0px;
+  height: 60px;
+  width: 100vw;
+  .menu-selected{
+    background-color: $guestbook-orange-normal;
+  }
+}
