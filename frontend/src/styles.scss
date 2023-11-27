@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+$guestbook-orange-light: #f8a145;
+$guestbook-orange-normal: #f07900;
+$guestbook-orange-dark: #d35100;
+
+body{
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family: Righteous;
+}
+
+.guestbook-orange-light{
+  color: $guestbook-orange-light;
+}
+
+.guestbook-orange-normal{
+  color: $guestbook-orange-normal;
+}
+
+.guestbook-orange-dark{
+  color: $guestbook-orange-dark;
+}
+
+.guestbook-btn-main{
+  background-color: $guestbook-orange-normal;
+  // border: 10px solid;
+  border-color:  $guestbook-orange-light;
+  // color:  $guestbook-orange-light;
+  border-radius: 10px;
+  color: rgb(10, 10, 10);
+  padding: 0.5rem 1rem;
+  user-select: none;
+  &:active{
+    // background-color: $guestbook-orange-dark;
+    color: rgb(218, 215, 215);
+    box-shadow: 0px 0px 5px 5px $guestbook-orange-light;
+  }
+}
+
+
