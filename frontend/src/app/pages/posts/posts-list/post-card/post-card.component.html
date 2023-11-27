@@ -1,0 +1,33 @@
+<div *ngIf="post">
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <div class="fs-5 guestbook-orange-light">
+          {{ post.user }}
+        </div>
+      </div>
+      <h5 class="card-title fs-3">{{ post.title }}</h5>
+      <div class="post-image d-flex justify-content-center align-items-center">
+        <i class="bi bi-image fs-1"></i>
+      </div>
+      <p *ngIf="post.description">{{ post.description }}</p>
+      <!-- <a [routerLink]="['/posts', post.id]" class="btn btn-primary">Read more</a> -->
+      <div class="d-flex mt-2 justify-content-between align-items-end">
+        <span class="timestamp">{{ post.createdAt | date : "medium" }}</span>
+        <div (click)="liked = !liked">
+          <div class="d-flex align-items-center">
+            <span class="me-2 fs-3">
+              {{ post.likes ? post.likes.length : 0 }}
+            </span>
+            <i
+              class="bi fs-1"
+              [ngClass]="
+                liked ? 'bi-heart-fill guestbook-orange-light' : 'bi-heart'
+              "
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

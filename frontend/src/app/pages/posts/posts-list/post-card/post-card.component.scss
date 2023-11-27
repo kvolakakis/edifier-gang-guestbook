@@ -1,0 +1,16 @@
+.card{
+  background-color: rgb(41, 40, 40);
+}
+
+.timestamp{
+  color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+}
+
+.post-image{
+  background-color:  rgb(70, 66, 66);
+  border-radius: 5px;
+  min-height: 200px;
+  object-fit: cover;
+}
