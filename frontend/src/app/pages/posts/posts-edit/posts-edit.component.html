@@ -1,1 +1,16 @@
-<p>posts-edit works!</p>
+<div class="mt-4">
+  <h1 class="guestbook-orange-normal mb-5"> Create a New Post</h1>
+  <!-- <form class="mt-5"> -->
+    <div class="mt-3">
+      <label for="title" class="fs-4">Title</label><br>
+      <input class="guestbook-input" type="text" placeholder="Type title" #title [(ngModel)]="post.title" />
+    </div>
+    <div class="mt-3">
+      <label for="description" class="fs-4">Description</label><br>
+      <textarea class="guestbook-input" type="text" placeholder="Type description (optional)" #description [(ngModel)]="post.description"></textarea>
+    </div>
+    <div class="float-end">
+      <button class="guestbook-btn-main mt-3" (click)="createPost()">Create Post</button>
+    </div>
+  <!-- </form> -->
+</div>

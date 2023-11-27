@@ -5,7 +5,7 @@ export class PostModel{
   user: string;
   files: string[];
   likes: string[];
-  comments: string[];
+  // comments: string[];
   createdAt: Date;
   updatedAt: Date;
 
@@ -16,7 +16,7 @@ export class PostModel{
     this.user = '';
     this.files = [];
     this.likes = [];
-    this.comments = [];
+    // this.comments = [];
     this.createdAt = new Date();
     this.updatedAt = new Date();
   }

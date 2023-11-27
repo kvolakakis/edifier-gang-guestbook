@@ -21,7 +21,7 @@ export class MenuComponent {
         newRoute = '/posts';
         break;
       case 'create':
-        newRoute = '/posts/edit/1';
+        newRoute = '/posts/edit';
         break;
       case 'home':
         newRoute = '/';

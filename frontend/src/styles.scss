@@ -46,4 +46,21 @@ body{
   }
 }
 
+.guestbook-input{
+  background-color: rgb(35, 35, 35);
+  // border-color:  $guestbook-orange-light;
+  border: 1px solid rgb(35, 35, 35);
+  border-bottom: 1px solid $guestbook-orange-light;
+  color:  white;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  user-select: none;
+  // font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  &:focus{
+    box-shadow: 0px 0px 2px 2px $guestbook-orange-light;
+  }
+}
+
 

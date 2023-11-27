@@ -22,10 +22,9 @@ export const routes: Routes = [
     children: [
       { path: "", component: PostsListComponent },
       { path: "view/:id", component: PostsViewComponent },
-      { path: "edit/:id", component: PostsEditComponent }
+      { path: "edit", component: PostsEditComponent }, //create
+      { path: "edit/:id", component: PostsEditComponent }, //edit
     ]
   },
-  // { path: "posts/view/:id", component: PostsViewComponent },
-  // { path: "posts/edit/", component: PostsEditComponent },
   { path: '**', redirectTo: '' }
 ];
