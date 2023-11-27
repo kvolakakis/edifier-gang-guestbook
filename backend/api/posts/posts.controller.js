@@ -27,7 +27,10 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const post = new PostModel();
-        post.postname = req.body.postname;
+        post.user = req.body.user;
+        post.title = req.body.title;
+        post.description = req.body.description;
+        post.files = req.body.files;
         const savedPost = await modelRepository.create(PostModel, post);
         res.send(savedPost);
     } catch (e) {

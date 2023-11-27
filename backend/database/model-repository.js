@@ -4,6 +4,7 @@ async function find(resourceModel, params) {
     .find(parsedParams.filters)
     .populate(parsedParams.populate)
     .select(parsedParams.select)
+    .sort({ createdAt: 'desc'})
     .exec();
   return resources;
 }

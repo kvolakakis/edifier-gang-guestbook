@@ -3,6 +3,7 @@ const postSchema = new mongoose.Schema(
     {
       title: { type: String, required: true, default: "UUUNTITLED" },
       description: { type: String, required: false, default: "" },
+      likes: { type: Array, required: true, default: []},
       files: { type: Array, required: true, default: []},
       user: { type: String, required: true, default: "incognito user" },
     },
