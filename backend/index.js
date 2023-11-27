@@ -7,6 +7,7 @@ const cors = require("cors");
 const database = require(path.resolve("database", "database.js"));
 const bodyParser = require("body-parser");
 const usersController = require(path.resolve("api", "users", "users.controller.js"));
+const postsController = require(path.resolve("api", "posts", "posts.controller.js"));
 // app definition and methods implementation
 app
   .use(bodyParser.json({ limit: "50MB" }))
@@ -30,3 +31,4 @@ app.listen(port, () => {
 })();
 
 app.use('/api/users', usersController);
+app.use('/api/posts', postsController);
