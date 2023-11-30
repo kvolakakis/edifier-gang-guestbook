@@ -1,9 +1,11 @@
+import { FileModel } from "./file.model";
+
 export class PostModel{
   _id: string;
   title: string;
   description: string;
   user: string;
-  files: string[];
+  files: FileModel[];
   likes: string[];
   // comments: string[];
   createdAt: Date;

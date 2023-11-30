@@ -7,8 +7,11 @@
         </div>
       </div>
       <h5 class="card-title fs-3">{{ post.title }}</h5>
-      <div class="post-image d-flex justify-content-center align-items-center">
+      <div class="post-image d-flex justify-content-center align-items-center" *ngIf="!post.files.length">
         <i class="bi bi-image fs-1"></i>
+      </div>
+      <div *ngIf="post.files.length">
+        <img  class="post-image" [src]="getImageURL(post.files[0].filepath)">
       </div>
       <p *ngIf="post.description">{{ post.description }}</p>
       <!-- <a [routerLink]="['/posts', post.id]" class="btn btn-primary">Read more</a> -->

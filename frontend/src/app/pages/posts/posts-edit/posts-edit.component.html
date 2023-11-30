@@ -9,6 +9,15 @@
       <label for="description" class="fs-4">Description</label><br>
       <textarea class="guestbook-input" type="text" placeholder="Type description (optional)" #description [(ngModel)]="post.description"></textarea>
     </div>
+    <div class="mt-4">
+      <!-- file upload -->
+      <label for="file" class="fs-4">Upload Image</label><br>
+      <div>
+        <!-- will display file preview -->
+        <img class="post-image" [src]="getImageURL(post.files[0].filepath)" *ngIf="post.files.length > 0 && post.files[0]"/>
+      </div>
+      <input type="file" (change)="onFileSelected($event)" #file />
+    </div>
     <div class="float-end">
       <button class="guestbook-btn-main mt-3" (click)="createPost()">Create Post</button>
     </div>

@@ -38,8 +38,8 @@ router.post("/", upload.single("file"), async (req, res) => {
   try {
     const file = new FileModel();
     file.filename = req.body.filename;
-    file.filepath = req.file.path;
     file.createdBy = req.body.createdBy;
+    file.filepath = req.file.path;
     const savedFile = await modelRepository.create(FileModel, file);
     res.send(savedFile);
   } catch (e) {

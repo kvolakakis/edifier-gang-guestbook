@@ -11,6 +11,7 @@
 .post-image{
   background-color:  rgb(70, 66, 66);
   border-radius: 5px;
-  min-height: 200px;
-  object-fit: cover;
+  max-height: 300px;
+  max-width: 300px;
+  object-fit: fill;
 }

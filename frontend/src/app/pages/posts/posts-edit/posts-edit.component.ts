@@ -4,6 +4,7 @@ import { PostModel } from '../../../global/models/post.model';
 import { FormsModule } from '@angular/forms';
 import { PostsService } from '../../../global/services/posts.service';
 import { Router } from '@angular/router';
+import { FilesService } from '../../../global/services/files.service';
 
 @Component({
   selector: 'app-posts-edit',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class PostsEditComponent {
   public post!: PostModel;
-  constructor(private postsService: PostsService, private router: Router) { }
+  constructor(private postsService: PostsService, private filesService: FilesService, private router: Router) { }
 
   ngOnInit(){
     this.post = new PostModel();
@@ -27,5 +28,16 @@ export class PostsEditComponent {
       this.router.navigateByUrl('/posts');
       // console.log(data);
     });
+  }
+
+  onFileSelected(event: any) {
+    this.post.files = [];
+    this.filesService.createFile(event.target.files[0]).subscribe((data: any) => {
+      this.post.files[0] = data;
+    });
+  }
+
+  getImageURL(filepath: string){
+    return this.filesService.getFileURL(filepath);
   }
 }

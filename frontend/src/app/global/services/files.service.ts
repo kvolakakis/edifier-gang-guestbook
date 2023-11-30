@@ -18,7 +18,11 @@ export class FilesService {
   }
 
   createFile(file: any) {
-    return this.http.post(this.hostURL, file);
+    const uploadData = new FormData();
+    uploadData.append('file', file);
+    uploadData.append('filename', file.name);
+    uploadData.append('filepath', "");
+    return this.http.post(this.hostURL, uploadData);
   }
 
   updateFile(id:string, file: any) {
@@ -27,5 +31,9 @@ export class FilesService {
 
   deleteFile(id:string) {
     return this.http.delete(this.hostURL + '/' + id);
+  }
+
+  getFileURL(filepath: string) {
+    return environment.host + "/api/" + filepath;
   }
 }
