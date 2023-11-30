@@ -12,6 +12,19 @@
   background-color:  rgb(70, 66, 66);
   border-radius: 5px;
   max-height: 300px;
-  max-width: 300px;
-  object-fit: fill;
+  max-width: 100%;
+  min-width: 200px;
+  object-fit: cover;
+}
+
+dialog{
+  background-color: rgb(41, 40, 40, 0.85);
+  position: fixed;
+  color: white;
+  border: 0px;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  padding: 1rem;
+  z-index: 1000;
 }

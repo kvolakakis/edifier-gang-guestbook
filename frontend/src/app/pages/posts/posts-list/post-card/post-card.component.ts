@@ -13,7 +13,7 @@ import { FilesService } from '../../../../global/services/files.service';
 export class PostCardComponent {
   @Input() post: PostModel | undefined;
   liked: boolean = false;
-
+  dialogClicked: boolean = false;
   constructor(private filesService: FilesService) {}
 
   getImageURL(filepath: string) {
