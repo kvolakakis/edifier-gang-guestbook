@@ -24,6 +24,25 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    try {
+        const user = await modelRepository.find(UserModel, {username: req.body.username});
+        // if (user) {
+        //     if (user.password === req.body.password) {
+        //         res.send(user);
+        //     } else {
+        //         res. status(401).send({ error: 'Invalid Password' });
+        //     }
+        // } else {
+        //     res.status(401).send({ error: 'Invalid Username' });
+        // }
+        return res.send(user);
+    } catch (e) {
+        console.error(e);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         const user = new UserModel();

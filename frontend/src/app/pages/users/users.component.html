@@ -1,1 +1,16 @@
-<p>users works!</p>
+<div class="container mt-4">
+  <div *ngIf="!currentUser">
+    <div class="fs-1 guestbook-font-color-light"> Hello stranger..!</div>
+    <div></div>
+    <div *ngIf="!currentUser">
+      <button class="guestbook-btn-main w-50" (click)="login()">Login</button>
+    </div>
+
+  </div>
+  <div *ngIf="currentUser">
+    <div class="fs-1">
+      Hello {{currentUser}}!
+    </div>
+    <button class="guestbook-btn-secondary w-50" (click)="logout()">Logout</button>
+  </div>
+</div>
