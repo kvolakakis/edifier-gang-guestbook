@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema(
       files: { type: Array, required: true, default: []},
       user: { type: String, required: true, default: "incognito user" },
     },
-    { timestamps: { createdAt: true, updatedAt: true } }
+    { timestamps: { createdAt: true } }
 );
 
 const Post = mongoose.model("post", postSchema);

@@ -3,7 +3,7 @@ const userSchema = new mongoose.Schema(
     {
       username: { type: String, required: true, default: "unidentified user" },
     },
-    { timestamps: { createdAt: true, updatedAt: true } }
+    { timestamps: { createdAt: true } }
 );
 
 const User = mongoose.model("User", userSchema);

@@ -8,6 +8,7 @@ const database = require(path.resolve("database", "database.js"));
 const bodyParser = require("body-parser");
 const usersController = require(path.resolve("api", "users", "users.controller.js"));
 const postsController = require(path.resolve("api", "posts", "posts.controller.js"));
+const filesController = require(path.resolve("api", "files", "files.controller.js"));
 // app definition and methods implementation
 app
   .use(bodyParser.json({ limit: "50MB" }))
@@ -32,3 +33,5 @@ app.listen(port, () => {
 
 app.use('/api/users', usersController);
 app.use('/api/posts', postsController);
+app.use('/api/files', filesController);
+app.use('/api/public', express.static(path.join(__dirname, 'public')));
