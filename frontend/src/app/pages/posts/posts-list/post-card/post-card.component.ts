@@ -5,7 +5,7 @@ import { PostModel } from '../../../../global/models/post.model';
 @Component({
   selector: 'app-post-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PostCardComponent],
   templateUrl: './post-card.component.html',
   styleUrl: './post-card.component.scss',
 })

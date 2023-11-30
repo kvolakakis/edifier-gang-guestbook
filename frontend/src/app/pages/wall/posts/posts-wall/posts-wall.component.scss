@@ -1,0 +1,103 @@
+.allContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background-color: aliceblue;
+}
+
+.line {
+  height: 92vh;
+  margin-top: 4vh;
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
+
+.displayedPost {
+  zoom: 70%;
+  width: 40vw;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+
+  .postDisplayRow {
+    display: flex;
+    flex-direction: row;
+    gap: 4vw;
+    margin-bottom: 4vw;
+  }
+
+  .bottomRow {
+    display: flex;
+    flex-direction: column;
+
+    .titleText {
+      font-size: large;
+      font-weight: 600;
+      color: #292828;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .helpTextContainer {
+      background-color: #f8a145;
+      padding: 0.5vw;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .helpText {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        width: 34vw;
+        font-size: larger;
+        margin: 0.4vw;
+      }
+    }
+
+    .prizeImage {
+      margin-left: 2vw;
+      width: 6vw;
+      height: 6vw;
+    }
+  }
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: 100vh;
+  margin-top: 3.5vh;
+  margin-bottom: 1vh;
+  margin-right: 2vw;
+  gap: 1.5vh;
+
+  .medal {
+    position: absolute;
+    z-index: 1;
+    width: 5.5vw;
+    height: 5.5vw;
+  }
+
+  .gold {
+    top: 1vh;
+    right: -0.4vw;
+  }
+
+  .silver {
+    top: 32.2vh;
+    right: -0.4vw;
+  }
+
+  .bronze {
+    top: 63.5vh;
+    right: -0.4vw;
+  }
+}
