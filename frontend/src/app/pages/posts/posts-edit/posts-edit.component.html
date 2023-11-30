@@ -1,25 +1,69 @@
 <div class="mt-4">
-  <h1 class="guestbook-orange-normal mb-5"> Create a New Post</h1>
+  <h1 class="guestbook-orange-normal mb-5">Create a New Post</h1>
   <!-- <form class="mt-5"> -->
-    <div class="mt-3">
-      <label for="title" class="fs-4">Title</label><br>
-      <input class="guestbook-input" type="text" placeholder="Type title" #title [(ngModel)]="post.title" />
+  <div class="mt-3">
+    <label for="title" class="fs-4">Title</label><br />
+    <input
+      class="guestbook-input"
+      type="text"
+      placeholder="Type title"
+      #title
+      [(ngModel)]="post.title"
+    />
+  </div>
+  <div class="mt-3">
+    <label for="description" class="fs-4">Description</label><br />
+    <textarea
+      class="guestbook-input"
+      type="text"
+      placeholder="Type description (optional)"
+      #description
+      [(ngModel)]="post.description"
+    ></textarea>
+  </div>
+  <div class="mt-4">
+    <span class="fs-4"> Upload Image</span>
+    <!-- file upload -->
+    <div class="d-flex justify-content-center">
+      <!-- will display file preview -->
+      <img
+        class="post-image"
+        [src]="getImageURL(post.files[0].filepath)"
+        *ngIf="post.files.length > 0 && post.files[0]"
+      />
     </div>
-    <div class="mt-3">
-      <label for="description" class="fs-4">Description</label><br>
-      <textarea class="guestbook-input" type="text" placeholder="Type description (optional)" #description [(ngModel)]="post.description"></textarea>
+    <label
+      for="file"
+      class="upload-area mt-2"
+      *ngIf="!(post.files.length > 0 && post.files[0])"
+    >
+      <div class="guestbook-btn-secondary w-100 h-100">
+        <div>
+          <i class="bi bi-cloud-upload fs-1 fw-bold"></i>
+        </div>
+        <div>
+          {{ currentDescription }}
+        </div>
+      </div> </label
+    >
+    <div *ngIf="post.files.length > 0 && post.files[0]" class="float-end mt-2">
+      <span class="main-color-link" (click)="removeImage()">
+        Remove Image
+      </span>
     </div>
-    <div class="mt-4">
-      <!-- file upload -->
-      <label for="file" class="fs-4">Upload Image</label><br>
-      <div>
-        <!-- will display file preview -->
-        <img class="post-image" [src]="getImageURL(post.files[0].filepath)" *ngIf="post.files.length > 0 && post.files[0]"/>
-      </div>
-      <input type="file" (change)="onFileSelected($event)" #file />
-    </div>
-    <div class="float-end">
-      <button class="guestbook-btn-main mt-3" (click)="createPost()">Create Post</button>
-    </div>
+    <br />
+    <input
+      class="file"
+      id="file"
+      type="file"
+      (change)="onFileSelected($event)"
+      #file
+    />
+  </div>
+  <div class="w-100">
+    <button class="w-100 guestbook-btn-main mt-3" (click)="createPost()">
+      Create Post
+    </button>
+  </div>
   <!-- </form> -->
 </div>
