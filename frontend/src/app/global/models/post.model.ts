@@ -4,10 +4,9 @@ export class PostModel{
   _id: string;
   title: string;
   description: string;
-  user: string;
+  createdBy: string;
   files: FileModel[];
   likes: string[];
-  // comments: string[];
   createdAt: Date;
   updatedAt: Date;
 
@@ -15,7 +14,7 @@ export class PostModel{
     this._id = '';
     this.title = '';
     this.description = '';
-    this.user = '';
+    this.createdBy = '';
     this.files = [];
     this.likes = [];
     // this.comments = [];

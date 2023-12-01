@@ -6,6 +6,7 @@ import { PostsService } from '../../../global/services/posts.service';
 import { Router } from '@angular/router';
 import { FilesService } from '../../../global/services/files.service';
 import { MenuComponent } from '../../../shared/menu/menu.component';
+import { UsersService } from '../../../global/services/users.service';
 
 @Component({
   selector: 'app-posts-edit',
@@ -16,6 +17,7 @@ import { MenuComponent } from '../../../shared/menu/menu.component';
 })
 export class PostsEditComponent {
   public post!: PostModel;
+  public currentUser: string | null = null;
   private possibleDescriptions: string[] = [
     "Upload an image you would not want your mother to see",
     "Upload an image you would not want your father to see",
@@ -35,15 +37,18 @@ export class PostsEditComponent {
     "Upload an image that will make you (or others) cry",
   ];
   public currentDescription: string = "";
-  constructor(private postsService: PostsService, private filesService: FilesService, private router: Router) { }
+  constructor(private postsService: PostsService, private filesService: FilesService, private router: Router, private usersService: UsersService) { }
 
   ngOnInit(){
     this.post = new PostModel();
+    this.currentUser = this.usersService.getCurrentUser();
     this.currentDescription = this.getRandomDescription();
   }
 
+
   createPost(){
-    this.post.user = "Incognito, Inc.";
+    if(!this.currentUser) return;
+    this.post.createdBy = this.currentUser;
     this.post.likes = [];
     this.postsService.createPost(this.post).subscribe((data: any) => {
       this.router.navigateByUrl('/posts');
