@@ -27,7 +27,13 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const post = new PostModel();
-        post.user = req.body.user;
+        post.createdBy = req.body.createdBy;
+
+        //if no createdBy is provided, return error that you must be logged in to create a post
+        if (!post.createdBy) {
+            res.status(400).send({ error: 'You must be logged in to create a post' });
+            return;
+        }
         post.title = req.body.title;
         post.description = req.body.description;
         post.files = req.body.files;
