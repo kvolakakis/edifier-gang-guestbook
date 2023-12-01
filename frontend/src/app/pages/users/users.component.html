@@ -37,6 +37,7 @@
           [(ngModel)]="password"
         />
       </div>
+      <span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span>
       <div class="mt-3">
         <button class="guestbook-btn-main w-100" (click)="login()">
           Login
@@ -63,6 +64,7 @@
           [(ngModel)]="password"
         />
       </div>
+      <span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span>
       <div class="mt-3">
         <button class="guestbook-btn-secondary w-100" (click)="register()">
           Register

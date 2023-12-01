@@ -18,42 +18,56 @@ export class UsersComponent {
   password: string = '';
   user: UserModel = new UserModel();
   mode: string = '';
-
+  errorMessage: string = '';
   constructor(private usersService: UsersService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getCurrentUser();
   }
 
-  async login(){
-    if(!this.username || !this.password) return;
+  async login() {
+    try {
+      this.errorMessage = '';
+      if (!this.username || !this.password) return;
+      this.user.username = this.username;
+      this.user.password = this.password;
+      this.usersService.login(this.user).then((data: any) => {
+        this.getCurrentUser();
+      }).catch((e: any) => {
+        console.log(e);
+        this.errorMessage = e.error.error;
+      });
+    } catch (e: any) {
+    }
+  }
+
+  async register() {
+    this.errorMessage = '';
+    if (!this.username || !this.password) return;
     this.user.username = this.username;
     this.user.password = this.password;
-    this.usersService.login(this.user).then((data: any) => {
-      this.getCurrentUser();
+    this.usersService.createUser(this.user).subscribe({
+      next: (data: any) => {
+        this.currentUser = data.username;
+        this.login();
+      },
+      error: (e: any) => {
+        console.log(e);
+        this.errorMessage = e.error.error;
+      }
     });
   }
 
-  async register(){
-    if(!this.username || !this.password) return;
-    this.user.username = this.username;
-    this.user.password = this.password;
-    this.usersService.createUser(this.user).subscribe((data: any) => {
-      this.currentUser = data.username;
-      this.login();
-    });
-  }
-
-  logout(){
+  logout() {
     this.usersService.logout();
     this.getCurrentUser();
   }
 
-  getCurrentUser(){
+  getCurrentUser() {
     this.currentUser = this.usersService.getCurrentUser();
   }
 
-  setMode(mode: string){
+  setMode(mode: string) {
     this.username = '';
     this.password = '';
     this.user = new UserModel();
