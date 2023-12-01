@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { PostsService } from '../../../global/services/posts.service';
 import { Router } from '@angular/router';
 import { FilesService } from '../../../global/services/files.service';
+import { MenuComponent } from '../../../shared/menu/menu.component';
 
 @Component({
   selector: 'app-posts-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MenuComponent],
   templateUrl: './posts-edit.component.html',
   styleUrl: './posts-edit.component.scss'
 })

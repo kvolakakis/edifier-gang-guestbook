@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { UsersService } from '../../global/services/users.service';
 import { firstValueFrom } from 'rxjs';
 import { UserModel } from '../../global/models/user.model';
+import { MenuComponent } from '../../shared/menu/menu.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MenuComponent],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })

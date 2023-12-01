@@ -6,7 +6,7 @@ import { FilesService } from '../../../../global/services/files.service';
 @Component({
   selector: 'app-post-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PostCardComponent],
   templateUrl: './post-card.component.html',
   styleUrl: './post-card.component.scss',
 })

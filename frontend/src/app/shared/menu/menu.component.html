@@ -3,7 +3,7 @@
     <div
       class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
       [ngClass]="{ 'menu-selected': activeOption === 'home' }"
-      (click)="setActiveOption('home')"
+      (click)="goto('home')"
     >
       <div>
         <i class="bi"
@@ -13,7 +13,7 @@
     <div
       class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
       [ngClass]="{ 'menu-selected': activeOption === 'browse' }"
-      (click)="setActiveOption('browse')"
+      (click)="goto('browse')"
     >
       <div>
         <i class="bi"
@@ -23,7 +23,7 @@
     <div
       class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
       [ngClass]="{ 'menu-selected': activeOption === 'create' }"
-      (click)="setActiveOption('create')"
+      (click)="goto('create')"
     >
       <div>
         <i
@@ -35,7 +35,7 @@
     <div
       class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
       [ngClass]="{ 'menu-selected': activeOption === 'user' }"
-      (click)="setActiveOption('user')"
+      (click)="goto('user')"
     >
       <div>
         <i

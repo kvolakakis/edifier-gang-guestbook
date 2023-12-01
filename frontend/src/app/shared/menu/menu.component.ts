@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
-  public activeOption: string = 'browse';
+  @Input() public activeOption: string = 'browse';
 
   constructor(private router: Router) { }
 
-  public setActiveOption(option: string){
+  public goto(option: string){
     let newRoute: string = '';
     switch(option){
       case 'browse':
@@ -31,6 +31,5 @@ export class MenuComponent {
         break;
     }
     this.router.navigateByUrl(newRoute);
-    this.activeOption = option;
   }
 }
