@@ -1,18 +1,83 @@
 <div class="container mt-4">
+  <h1 class="guestbook-orange-light mb-5">User Profile</h1>
   <div *ngIf="!currentUser">
-    <div class="fs-1 guestbook-font-color-light"> Hello stranger..!</div>
-    <div></div>
-    <div *ngIf="!currentUser">
-      <button class="guestbook-btn-main w-50" (click)="login()">Login</button>
+    <div class="fs-5">
+      Hello stranger..! Please login or register so that you can make posts.
     </div>
 
+    <div class="mt-3" *ngIf="mode===''">
+      <button class="guestbook-btn-main px-5 me-3" (click)="setMode('login')">
+        Login
+      </button>
+      <button
+        class="guestbook-btn-secondary px-5"
+        (click)="setMode('register')"
+      >
+        Register
+      </button>
+    </div>
+    <!-- <div class="disclaimer">
+      * You can login with any username. No need to register. Remember your
+      username so that you can connect later on if needed.
+    </div> -->
+    <div *ngIf="mode === 'login'">
+      <div class="mt-3">
+        <input
+          class="guestbook-input"
+          type="text"
+          #user
+          placeholder="Username..."
+          [(ngModel)]="username"
+        />
+        <input
+          class="guestbook-input mt-3"
+          type="password"
+          #user
+          placeholder="Password..."
+          [(ngModel)]="password"
+        />
+      </div>
+      <div class="mt-3">
+        <button class="guestbook-btn-main w-100" (click)="login()">
+          Login
+        </button>
+      </div>
+      <div class="mt-4">
+        Not a user? <span class="main-color-link" (click)="setMode('register')">Register</span>
+      </div>
+    </div>
+    <div *ngIf="mode === 'register'">
+      <div class="mt-3">
+        <input
+          class="guestbook-input"
+          type="text"
+          #user
+          placeholder="Username..."
+          [(ngModel)]="username"
+        />
+        <input
+          class="guestbook-input mt-3"
+          type="password"
+          #user
+          placeholder="Password..."
+          [(ngModel)]="password"
+        />
+      </div>
+      <div class="mt-3">
+        <button class="guestbook-btn-secondary w-100" (click)="register()">
+          Register
+        </button>
+      </div>
+      <div class="mt-4">
+        Already a user? <span class="main-color-link" (click)="setMode('login')">Login</span>
+      </div>
+    </div>
   </div>
   <div *ngIf="currentUser">
-    <div class="fs-1">
-      Hello {{currentUser}}!
-    </div>
-    <button class="guestbook-btn-secondary w-50" (click)="logout()">Logout</button>
+    <div class="fs-1">Hello {{ currentUser }}!</div>
+    <button class="guestbook-btn-secondary w-50" (click)="logout()">
+      Logout
+    </button>
   </div>
 </div>
 <app-menu [activeOption]="'user'"></app-menu>
-
