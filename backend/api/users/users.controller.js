@@ -27,15 +27,12 @@ router.get('/:id', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const user = await modelRepository.find(UserModel, {username: req.body.username});
-        // if (user) {
-        //     if (user.password === req.body.password) {
-        //         res.send(user);
-        //     } else {
-        //         res. status(401).send({ error: 'Invalid Password' });
-        //     }
-        // } else {
-        //     res.status(401).send({ error: 'Invalid Username' });
-        // }
+        if (user.length === 0) {
+            return res.status(401).send({ error: 'User does not exist. Who are you?' });
+        }
+        if (user[0].password !== req.body.password) {
+            return res.status(401).send({ error: 'Invalid password! Hope you are not trying to hack around..' });
+        }
         return res.send(user);
     } catch (e) {
         console.error(e);
@@ -47,6 +44,13 @@ router.post('/', async (req, res) => {
     try {
         const user = new UserModel();
         user.username = req.body.username;
+        user.password = req.body.password;
+        // check if already exists
+        const existingUser = await modelRepository.find(UserModel, {username: user.username});
+        // return error if already exists
+        if (existingUser.length > 0) {
+            return res.status(409).send({ error: 'What a shame. A user already has taken this username.. try again!' });
+        }
         const savedUser = await modelRepository.create(UserModel, user);
         res.send(savedUser);
     } catch (e) {
