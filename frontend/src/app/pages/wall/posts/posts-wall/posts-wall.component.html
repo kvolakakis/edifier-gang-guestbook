@@ -2,23 +2,39 @@
   <div class="leftColumn">
     <div class="postDisplayRow">
       <app-post-card
-        style="zoom: 70%; width: 35vw"
+        class="displayedPost"
         [post]="displayedPosts[0]._id !== '' ? displayedPosts[0] : undefined"
       ></app-post-card>
       <app-post-card
-        style="zoom: 70%; width: 35vw"
+        class="displayedPost"
         [post]="displayedPosts[1]._id !== '' ? displayedPosts[1] : undefined"
+      ></app-post-card>
+      <app-post-card
+        class="displayedPost"
+        [post]="displayedPosts[2]._id !== '' ? displayedPosts[2] : undefined"
+      ></app-post-card>
+      <app-post-card
+        class="displayedPost"
+        [post]="displayedPosts[3]._id !== '' ? displayedPosts[3] : undefined"
       ></app-post-card>
     </div>
 
     <div class="postDisplayRow">
       <app-post-card
-        style="zoom: 70%; width: 35vw"
-        [post]="displayedPosts[2]._id !== '' ? displayedPosts[2] : undefined"
+        class="displayedPost"
+        [post]="displayedPosts[4]._id !== '' ? displayedPosts[4] : undefined"
       ></app-post-card>
       <app-post-card
-        style="zoom: 70%; width: 35vw"
-        [post]="displayedPosts[3]._id !== '' ? displayedPosts[3] : undefined"
+        class="displayedPost"
+        [post]="displayedPosts[5]._id !== '' ? displayedPosts[5] : undefined"
+      ></app-post-card>
+      <app-post-card
+        class="displayedPost"
+        [post]="displayedPosts[6]._id !== '' ? displayedPosts[6] : undefined"
+      ></app-post-card>
+      <app-post-card
+        class="displayedPost"
+        [post]="displayedPosts[7]._id !== '' ? displayedPosts[7] : undefined"
       ></app-post-card>
     </div>
 
@@ -32,17 +48,7 @@
 
         <img
           class="prizeImage"
-          src="../../../../../assets/Images/postsWall/prizes/edifier.png"
-        />
-
-        <img
-          class="prizeImage"
-          src="../../../../../assets/Images/postsWall/prizes/powerbank.png"
-        />
-
-        <img
-          class="prizeImage"
-          src="../../../../../assets/Images/postsWall/prizes/carHolder.png"
+          src="../../../../../assets/Images/postsWall/prizes/prize.png"
         />
       </div>
     </div>
@@ -50,36 +56,44 @@
 
   <img class="line" src="../../../../../assets/Images/postsWall/line.png" />
   <!-- Top Three -->
+
   <div class="rightColumn">
-    <img
-      class="medal gold"
-      src="../../../../../assets/Images/postsWall/medals/1st place.png"
-    />
-    <img
-      class="medal silver"
-      src="../../../../../assets/Images/postsWall/medals/2nd place.png"
-    />
-    <img
-      class="medal bronze"
-      src="../../../../../assets/Images/postsWall/medals/3rd place.png"
-    />
-    <app-post-card
-      class="displayedPost"
-      [post]="topThreePosts[0]"
-    ></app-post-card>
-    <app-post-card
-      class="displayedPost"
-      [post]="topThreePosts[1]"
-    ></app-post-card>
-    <app-post-card
-      class="displayedPost"
-      [post]="topThreePosts[2]"
-    ></app-post-card>
+    <h1 style="color: black; font-size: 2.3vw">YOUR TOP POSTS</h1>
+
+    <div class="topDisplayedPostContainer">
+      <img
+        class="medal"
+        src="../../../../../assets/Images/postsWall/medals/1st place.png"
+      />
+
+      <app-post-card
+        class="displayedPost"
+        [post]="topThreePosts[0]"
+      ></app-post-card>
+    </div>
+
+    <div class="topDisplayedPostContainer">
+      <img
+        class="medal"
+        src="../../../../../assets/Images/postsWall/medals/2nd place.png"
+      />
+
+      <app-post-card
+        class="displayedPost"
+        [post]="topThreePosts[1]"
+      ></app-post-card>
+    </div>
+
+    <div class="topDisplayedPostContainer">
+      <img
+        class="medal"
+        src="../../../../../assets/Images/postsWall/medals/3rd place.png"
+      />
+
+      <app-post-card
+        class="displayedPost"
+        [post]="topThreePosts[2]"
+      ></app-post-card>
+    </div>
   </div>
 </div>
-
-<!-- <div *ngFor="let post of topThreePosts">
-  <div style="max-width: 700px; max-height: 325px; scale: 70%">
-    <app-post-card [post]="post"></app-post-card>
-  </div>
-</div> -->
