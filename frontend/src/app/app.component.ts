@@ -16,16 +16,7 @@ export class AppComponent {
   title = 'frontend';
   menuVisible = true;
 
-  constructor(private activatedRoute: ActivatedRoute) {
-
-    // get current url and if it is "post-wall" then hide menu
-    this.activatedRoute.url.subscribe(url => {
-      console.log(url);
-      if(url[0].path == "post-wall"){
-        this.menuVisible = false;
-      }
-    });
-  }
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(){
 

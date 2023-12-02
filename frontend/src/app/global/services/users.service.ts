@@ -36,7 +36,6 @@ export class UsersService {
   }
 
   async login(user: any) {
-    console.log(this.hostURL + 'login');
     let response = await firstValueFrom(this.http.post(this.hostURL + 'login', user));
 
     if (response) {

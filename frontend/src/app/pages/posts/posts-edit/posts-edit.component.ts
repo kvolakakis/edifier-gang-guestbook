@@ -52,7 +52,6 @@ export class PostsEditComponent {
     this.post.likes = [];
     this.postsService.createPost(this.post).subscribe((data: any) => {
       this.router.navigateByUrl('/posts');
-      // console.log(data);
     });
   }
 

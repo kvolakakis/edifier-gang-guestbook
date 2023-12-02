@@ -34,7 +34,6 @@ export class UsersComponent {
       this.usersService.login(this.user).then((data: any) => {
         this.getCurrentUser();
       }).catch((e: any) => {
-        console.log(e);
         this.errorMessage = e.error.error;
       });
     } catch (e: any) {
@@ -52,7 +51,6 @@ export class UsersComponent {
         this.login();
       },
       error: (e: any) => {
-        console.log(e);
         this.errorMessage = e.error.error;
       }
     });

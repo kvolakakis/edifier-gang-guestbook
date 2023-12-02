@@ -24,36 +24,38 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
-    try {
-        const post = new PostModel();
-        post.createdBy = req.body.createdBy;
+// router.post('/', async (req, res) => {
+//     try {
+//         const post = new PostModel();
+//         post.createdBy = req.body.createdBy;
 
-        //if no createdBy is provided, return error that you must be logged in to create a post
-        if (!post.createdBy) {
-            res.status(400).send({ error: 'You must be logged in to create a post' });
-            return;
-        }
-        post.title = req.body.title;
-        post.description = req.body.description;
-        post.files = req.body.files;
-        const savedPost = await modelRepository.create(PostModel, post);
-        res.send(savedPost);
-    } catch (e) {
-        console.error(e);
-        res.status(500).send({ error: 'Internal Server Error' });
-    }
-});
+//         //if no createdBy is provided, return error that you must be logged in to create a post
+//         if (!post.createdBy) {
+//             res.status(400).send({ error: 'You must be logged in to create a post' });
+//             return;
+//         }
+//         post.title = req.body.title;
+//         post.description = req.body.description;
+//         post.files = req.body.files;
+//         const savedPost = await modelRepository.create(PostModel, post);
+//         // I want to broadcast here
+//         broadcast();
+//         res.send(savedPost);
+//     } catch (e) {
+//         console.error(e);
+//         res.status(500).send({ error: 'Internal Server Error' });
+//     }
+// });
 
-router.put('/:id', async (req, res) => {
-    try {
-        const post = await modelRepository.update(PostModel, req.params.id, req.body);
-        res.send(post);
-    } catch (e) {
-        console.error(e);
-        res.status(500).send({ error: 'Internal Server Error' });
-    }
-});
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const post = await modelRepository.update(PostModel, req.params.id, req.body);
+//         res.send(post);
+//     } catch (e) {
+//         console.error(e);
+//         res.status(500).send({ error: 'Internal Server Error' });
+//     }
+// });
 
 router.delete('/', async (req, res) => {
     try {

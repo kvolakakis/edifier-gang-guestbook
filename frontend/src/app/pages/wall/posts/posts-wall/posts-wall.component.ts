@@ -77,8 +77,6 @@ export class PostsWallComponent {
         this.displayedPosts.push(posts[positions[i]]);
       }
     }
-
-    console.log(this.displayedPosts);
   }
 
   SelectRandomPostsForDisplay(posts: PostModel[], numOfPosts: number) {

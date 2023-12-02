@@ -4,6 +4,7 @@ import { PostsService } from '../../../global/services/posts.service';
 import { PostModel } from '../../../global/models/post.model';
 import { PostCardComponent } from './post-card/post-card.component';
 import { MenuComponent } from '../../../shared/menu/menu.component';
+import { SocketService } from '../../../global/services/socket.service';
 
 @Component({
   selector: 'app-posts-list',
@@ -14,10 +15,13 @@ import { MenuComponent } from '../../../shared/menu/menu.component';
 })
 export class PostsListComponent {
   public posts: PostModel[] = [];
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService, private socketService: SocketService) { }
 
   ngOnInit(){
     this.getAllPosts();
+    this.socketService.receivePostsUpdated().subscribe((data: any) => {
+      this.getAllPosts();
+    });
   }
 
   getAllPosts() {

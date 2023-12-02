@@ -47,7 +47,6 @@ export class PostCardComponent {
     if (!this.post) return;
     this.postsService.updatePost(this.post).subscribe((data: any) => {
       this.liked = !!this.post?.likes.includes(this.currentUser || '');
-      console.log(data);
     });
   }
 
