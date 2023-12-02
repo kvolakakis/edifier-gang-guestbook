@@ -14,28 +14,33 @@
 }
 
 .displayedPost {
-  zoom: 70%;
-  width: 40vw;
+  zoom: 65%;
+  width: 20vw;
 }
 
 .leftColumn {
   display: flex;
   flex-direction: column;
+  margin-left: 4vw;
   width: 70vw;
-  height: auto;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+
+  margin-top: 4vh;
 
   .postDisplayRow {
     display: flex;
     flex-direction: row;
-    gap: 4vw;
-    margin-bottom: 4vw;
+    align-items: center;
+    gap: 5vh;
+    margin-bottom: 5vh;
+    height: 31.5vh;
   }
 
   .bottomRow {
     display: flex;
     flex-direction: column;
+    height: 22vh;
+    margin-top: 6vh;
 
     .titleText {
       font-size: large;
@@ -50,21 +55,25 @@
       border-radius: 10px;
       display: flex;
       flex-direction: row;
-      justify-content: center;
       align-items: center;
 
       .helpText {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        width: 34vw;
+        width: 40vw;
         font-size: larger;
+        font-weight: 530;
         margin: 0.4vw;
+        margin-left: 1.5vw;
+        color: aliceblue;
       }
     }
 
     .prizeImage {
+      position: absolute;
       margin-left: 2vw;
-      width: 6vw;
-      height: 6vw;
+      width: 15vw;
+      right: 37vw;
+      bottom: 1vh;
     }
   }
 }
@@ -72,6 +81,9 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
+  gap: 2vh;
+  align-items: center;
+
   width: 30vw;
   height: 100vh;
   margin-top: 3.5vh;
@@ -79,16 +91,19 @@
   margin-right: 2vw;
   gap: 1.5vh;
 
+  .topDisplayedPostContainer {
+    position: relative;
+    width: 20vw;
+    zoom: 85%;
+  }
+
   .medal {
     position: absolute;
     z-index: 1;
-    width: 5.5vw;
-    height: 5.5vw;
-  }
-
-  .gold {
-    top: 1vh;
-    right: -0.4vw;
+    width: 5vw;
+    height: 5vw;
+    top: -3vh;
+    right: -2.5vw;
   }
 
   .silver {

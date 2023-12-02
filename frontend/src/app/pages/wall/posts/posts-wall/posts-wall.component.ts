@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PostCardComponent } from '../../../posts/posts-list/post-card/post-card.component';
 import { PostModel } from '../../../../global/models/post.model';
 import { PostsService } from '../../../../global/services/posts.service';
+import { SocketService } from '../../../../global/services/socket.service';
 
 @Component({
   selector: 'app-posts-wall',
@@ -16,33 +17,35 @@ export class PostsWallComponent {
   public topThreePosts: PostModel[] = [];
   public displayedPosts: PostModel[] = [];
 
-  constructor(private postsService: PostsService) {}
+  constructor(
+    private postsService: PostsService,
+    private socketService: SocketService
+  ) {}
 
   ngOnInit() {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 8; i++) {
       this.displayedPosts.push(new PostModel());
     }
 
     this.getAllPosts();
+
+    this.UpdateData();
+    this.socketService.receivePostsUpdated().subscribe((data: any) => {
+      this.getAllPosts();
+    });
   }
 
   getAllPosts() {
     this.postsService.getPosts().subscribe((data: any) => {
       this.posts = data;
-
-      this.AssignTestValues(this.posts);
-      this.GetTopPosts(this.posts);
-      this.DisplayPosts(this.posts, 4);
-
-      this.UpdateData();
     });
   }
 
   UpdateData() {
     setInterval(() => {
       this.GetTopPosts(this.posts);
-      this.DisplayPosts(this.posts, 4);
-    }, 15000);
+      this.DisplayPosts(this.posts, 8);
+    }, 10000);
   }
 
   AssignTestValues(posts: PostModel[]) {
@@ -59,6 +62,7 @@ export class PostsWallComponent {
   GetTopPosts(posts: PostModel[]) {
     //sort posts according to likes
     posts.sort((a, b) => b.likes.length - a.likes.length);
+    this.topThreePosts = [];
 
     this.topThreePosts.push(posts[0]);
     this.topThreePosts.push(posts[1]);
@@ -82,14 +86,14 @@ export class PostsWallComponent {
   SelectRandomPostsForDisplay(posts: PostModel[], numOfPosts: number) {
     let selectedPositions: number[] = [];
 
+    if (numOfPosts > posts.length - 3) numOfPosts = posts.length - 3;
+
     for (let i = 0; i < numOfPosts; i++) {
-      if (posts.length > i) {
-        let position = this.GetRandomNumber(
-          posts.length,
-          selectedPositions.concat([0, 1, 2])
-        );
-        selectedPositions.push(position);
-      }
+      let position = this.GetRandomNumber(
+        posts.length,
+        selectedPositions.concat([0, 1, 2])
+      );
+      selectedPositions.push(position);
     }
 
     return selectedPositions;
