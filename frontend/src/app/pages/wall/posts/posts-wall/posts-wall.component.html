@@ -1,56 +1,43 @@
 <div class="allContainer">
   <div class="leftColumn">
-    <div class="postDisplayRow">
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[0]._id !== '' ? displayedPosts[0] : undefined"
-      ></app-post-card>
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[1]._id !== '' ? displayedPosts[1] : undefined"
-      ></app-post-card>
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[2]._id !== '' ? displayedPosts[2] : undefined"
-      ></app-post-card>
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[3]._id !== '' ? displayedPosts[3] : undefined"
-      ></app-post-card>
-    </div>
-
-    <div class="postDisplayRow">
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[4]._id !== '' ? displayedPosts[4] : undefined"
-      ></app-post-card>
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[5]._id !== '' ? displayedPosts[5] : undefined"
-      ></app-post-card>
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[6]._id !== '' ? displayedPosts[6] : undefined"
-      ></app-post-card>
-      <app-post-card
-        class="displayedPost"
-        [post]="displayedPosts[7]._id !== '' ? displayedPosts[7] : undefined"
-      ></app-post-card>
-    </div>
-
-    <div class="bottomRow">
-      <div class="titleText">Ε, ΔΙΑΒΑΣΕ ΕΔΩ!</div>
-      <div class="helpTextContainer">
-        <div class="helpText">
-          Παίξε παιχνίδια για να <s>περάσεις καλά</s> μαζέψεις πόντους και να
-          κερδίσεις ένα από τα 3 δώρα... μικρέ μου καπιταλιστή
-        </div>
-
-        <img
-          class="prizeImage"
-          src="../../../../../assets/Images/postsWall/prizes/prize.png"
-        />
+    <div class="row">
+      <div *ngFor="let post of displayedPosts" class="col-4 gap-2 mt-4">
+        <app-post-card
+          [minHeight]="true"
+          class="displayedPost"
+          [post]="post"
+        ></app-post-card>
       </div>
+    </div>
+    <div class="bottom-container">
+      <div class="fs-4">
+        <span class="read-here">ΔΙΑΒΑΣΕ ΕΔΩ!</span>
+        <div class="fs-3 read-here-body d-flex">
+          <div>
+            Παίξε παιχνίδια για να <s>περάσεις καλά</s> μαζέψεις πόντους και να κερδίσεις <br> ένα από τα 3 δώρα... μικρέ μου καπιταλιστή
+          </div>
+          <div>
+            <img
+              class="prizeImage"
+              src="../../../../../assets/Images/postsWall/prizes/prize.png"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- <div class="bottomRow">
+        <div class="titleText">Ε, ΔΙΑΒΑΣΕ ΕΔΩ!</div>
+        <div class="helpTextContainer">
+          <div class="helpText">
+            Παίξε παιχνίδια για να <s>περάσεις καλά</s> μαζέψεις πόντους και να
+            κερδίσεις ένα από τα 3 δώρα... μικρέ μου καπιταλιστή
+          </div>
+
+          <img
+            class="prizeImage"
+            src="../../../../../assets/Images/postsWall/prizes/prize.png"
+          />
+        </div>
+      </div> -->
     </div>
   </div>
 
@@ -67,6 +54,7 @@
       />
 
       <app-post-card
+        [minHeight]="true"
         class="displayedPost"
         [post]="topThreePosts[0]"
       ></app-post-card>
@@ -79,6 +67,7 @@
       />
 
       <app-post-card
+        [minHeight]="true"
         class="displayedPost"
         [post]="topThreePosts[1]"
       ></app-post-card>
@@ -91,6 +80,7 @@
       />
 
       <app-post-card
+        [minHeight]="true"
         class="displayedPost"
         [post]="topThreePosts[2]"
       ></app-post-card>

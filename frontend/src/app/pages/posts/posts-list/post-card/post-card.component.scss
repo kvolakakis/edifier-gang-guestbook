@@ -1,5 +1,10 @@
 .card{
   background-color: rgb(41, 40, 40);
+  min-height: 100px;
+}
+
+.min-height{
+  min-height: 300px;
 }
 
 .timestamp{
@@ -27,4 +32,10 @@ dialog{
   top: 0px;
   padding: 1rem;
   z-index: 1000;
+}
+
+.timestamp-container{
+  position: absolute;
+  bottom: 5px;
+  width: 92%;
 }

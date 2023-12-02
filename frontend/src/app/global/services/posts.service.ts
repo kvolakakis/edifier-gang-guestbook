@@ -29,6 +29,10 @@ export class PostsService {
     return this.http.delete(this.hostURL + '/' + id);
   }
 
+  getTopPosts() {
+    return this.http.get(this.hostURL + '/top');
+  }
+
   // likePost(id:string) {
   //   return this.http.post(this.hostURL + '/like/' + id, {});
   // }

@@ -4,6 +4,7 @@
   height: 100vh;
   width: 100vw;
   background-color: aliceblue;
+  overflow: hidden;
 }
 
 .line {
@@ -16,6 +17,12 @@
 .displayedPost {
   zoom: 65%;
   width: 20vw;
+}
+
+.read-here-body{
+  background-color: #f8a145;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .leftColumn {
@@ -37,8 +44,8 @@
   }
 
   .bottomRow {
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     height: 22vh;
     margin-top: 6vh;
 
@@ -68,14 +75,24 @@
       }
     }
 
-    .prizeImage {
-      position: absolute;
-      margin-left: 2vw;
-      width: 15vw;
-      right: 37vw;
-      bottom: 1vh;
-    }
   }
+}
+.prizeImage {
+  position: absolute;
+  margin-left: 2vw;
+  width: 13vw;
+  // width: 15vw;
+  // right: 37vw;
+  bottom: -40px;
+}
+.bottom-container{
+  position: absolute;
+  width: 60vw;
+  bottom: 20px;
+}
+
+.read-here{
+  color: black;
 }
 
 .rightColumn {

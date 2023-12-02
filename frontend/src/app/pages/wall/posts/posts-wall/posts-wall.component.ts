@@ -24,7 +24,7 @@ export class PostsWallComponent {
 
   ngOnInit() {
     for (let i = 0; i < 8; i++) {
-      this.displayedPosts.push(new PostModel());
+      // this.displayedPosts.push(new PostModel());
     }
 
     this.getAllPosts();
@@ -32,20 +32,21 @@ export class PostsWallComponent {
     this.UpdateData();
     this.socketService.receivePostsUpdated().subscribe((data: any) => {
       this.getAllPosts();
+      this.GetTopPosts();
     });
   }
 
   getAllPosts() {
     this.postsService.getPosts().subscribe((data: any) => {
       this.posts = data;
+      this.DisplayPosts(this.posts, 9);
     });
   }
 
   UpdateData() {
     setInterval(() => {
-      this.GetTopPosts(this.posts);
-      this.DisplayPosts(this.posts, 8);
-    }, 10000);
+      this.DisplayPosts(this.posts, 9);
+    }, 2000);
   }
 
   AssignTestValues(posts: PostModel[]) {
@@ -59,24 +60,22 @@ export class PostsWallComponent {
     }
   }
 
-  GetTopPosts(posts: PostModel[]) {
-    //sort posts according to likes
-    posts.sort((a, b) => b.likes.length - a.likes.length);
+  GetTopPosts() {
     this.topThreePosts = [];
-
-    this.topThreePosts.push(posts[0]);
-    this.topThreePosts.push(posts[1]);
-    this.topThreePosts.push(posts[2]);
+    this.postsService.getTopPosts().subscribe((data: any) => {
+      this.topThreePosts = data;
+    });
   }
 
   DisplayPosts(posts: PostModel[], numOfPosts: number) {
+
     let positions = this.SelectRandomPostsForDisplay(posts, numOfPosts);
     this.displayedPosts = [];
 
     for (let i = 0; i < numOfPosts; i++) {
       //if there exist less than the desired posts to display, create an undefined post
       if (posts.length - 3 <= i) {
-        this.displayedPosts.push(new PostModel());
+        // this.displayedPosts.push(new PostModel());
       } else {
         this.displayedPosts.push(posts[positions[i]]);
       }
@@ -91,7 +90,7 @@ export class PostsWallComponent {
     for (let i = 0; i < numOfPosts; i++) {
       let position = this.GetRandomNumber(
         posts.length,
-        selectedPositions.concat([0, 1, 2])
+        selectedPositions.concat([])
       );
       selectedPositions.push(position);
     }

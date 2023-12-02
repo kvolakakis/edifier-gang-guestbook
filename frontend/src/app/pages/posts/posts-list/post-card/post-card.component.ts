@@ -17,9 +17,11 @@ export class PostCardComponent {
   liked: boolean = false;
   dialogClicked: boolean = false;
   currentUser: string | null = null;
+  @Input() minHeight: boolean = false;
   constructor(private filesService: FilesService, private postsService: PostsService, private usersService: UsersService) {}
 
   ngOnInit() {
+    console.log(this.minHeight);
     this.currentUser = this.usersService.getCurrentUser();
     if(this.currentUser)
       this.liked = !!this.post?.likes.includes(this.currentUser || '');
