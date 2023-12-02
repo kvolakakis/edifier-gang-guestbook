@@ -33,6 +33,7 @@ export class UsersComponent {
       this.user.password = this.password;
       this.usersService.login(this.user).then((data: any) => {
         this.getCurrentUser();
+        this.reload();
       }).catch((e: any) => {
         this.errorMessage = e.error.error;
       });
@@ -58,6 +59,7 @@ export class UsersComponent {
 
   logout() {
     this.usersService.logout();
+    this.reload();
     this.getCurrentUser();
   }
 
@@ -72,4 +74,8 @@ export class UsersComponent {
     this.mode = mode;
   }
 
+  // reload
+  reload() {
+    window.location.reload();
+  }
 }

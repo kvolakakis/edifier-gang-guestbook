@@ -21,6 +21,7 @@
       </div>
     </div>
     <div
+      *ngIf="currentUser"
       class="text-center w-50 h-100 d-flex align-items-center justify-content-center"
       [ngClass]="{ 'menu-selected': activeOption === 'create' }"
       (click)="goto('create')"

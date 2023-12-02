@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { UsersService } from '../../global/services/users.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,8 +12,12 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
   @Input() public activeOption: string = 'browse';
+  public currentUser: string | null = null;
+  constructor(private router: Router, private usersService: UsersService) { }
 
-  constructor(private router: Router) { }
+  ngOnInit() {
+    this.currentUser = this.usersService.getCurrentUser();
+  }
 
   public goto(option: string){
     let newRoute: string = '';

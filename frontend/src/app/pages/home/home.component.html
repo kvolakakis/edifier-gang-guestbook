@@ -1,13 +1,47 @@
 <div class="container mt-2 d-flex justify-content-center">
   <div>
-    <h1 class="text-center guestbook-orange-light">Edifier Gang <br> Graduation Guestbook</h1>
-    <div class="d-flex justify-content-center mt-4">
+    <h1 class="text-center guestbook-orange-light">
+      Edifier Gang <br />
+      Graduation Guestbook
+    </h1>
+    <div class="fs-5">
+      Welcome to our guestbook. bla blabla blabla blabla wraio keimenaki bla
+      blabla blabla blabla
+    </div>
+    <div class="d-flex justify-content-center mt-4" *ngIf="currentUser">
       <div class="w-75">
         <div class="mt-4">
-          <button class="guestbook-btn-main fs-2 w-100">Browse Posts</button>
+          <button
+            class="guestbook-btn-main fs-2 w-100"
+            (click)="goto('browse')"
+          >
+            Browse Posts
+          </button>
         </div>
         <div class="mt-4">
-          <button class="guestbook-btn-secondary fs-2 w-100">Create Post</button>
+          <button
+            class="guestbook-btn-secondary fs-2 w-100"
+            (click)="goto('create')"
+          >
+            Create Post
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4" *ngIf="!currentUser">
+      <div class="fs-5">
+        <br />
+        In order to be able to create a post or like posts you need to register
+        or login.
+      </div>
+      <div class="w-100">
+        <div class="mt-4">
+          <button
+            class="guestbook-btn-secondary fs-2 w-100"
+            (click)="goto('user')"
+          >
+            Register or Login
+          </button>
         </div>
       </div>
     </div>
