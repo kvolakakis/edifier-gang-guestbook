@@ -21,8 +21,8 @@ export class PostsService {
     return this.http.post(this.hostURL, post);
   }
 
-  updatePost(id:string, post: any) {
-    return this.http.put(this.hostURL + '/' + id, post);
+  updatePost(post: any) {
+    return this.http.put(this.hostURL + '/' + post._id, post);
   }
 
   deletePost(id:string) {
