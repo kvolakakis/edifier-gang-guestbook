@@ -14,6 +14,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/top', async (req, res) => {
+    try{
+        const posts = await modelRepository.find(PostModel, {});
+        posts.sort((a, b) => b.likes.length - a.likes.length);
+        // get top 3
+        posts.splice(3);
+        res.send(posts);
+    } catch (e) {
+        console.error(e);
+        throw new Error(e);
+    }
+});
+
 router.get('/:id', async (req, res) => {
     try{
         const post = await modelRepository.findById(PostModel, req.params.id, req.query);
@@ -23,6 +36,7 @@ router.get('/:id', async (req, res) => {
         throw new Error(e);
     }
 });
+
 
 // router.post('/', async (req, res) => {
 //     try {
