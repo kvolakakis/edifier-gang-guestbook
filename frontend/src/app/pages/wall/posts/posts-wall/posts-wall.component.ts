@@ -46,7 +46,7 @@ export class PostsWallComponent {
   UpdateData() {
     setInterval(() => {
       this.DisplayPosts(this.posts, 9);
-    }, 2000);
+    }, 5000);
   }
 
   AssignTestValues(posts: PostModel[]) {
